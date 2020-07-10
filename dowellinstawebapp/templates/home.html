@@ -1,0 +1,402 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+DoWell Research
+{% endblock title %}
+
+{% block css %}
+<style>
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+.sliders {display: none;}
+img {vertical-align: middle;}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+  font-weight:600px
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+.red { color:#9a55ff; font-weight: bold; }
+.yellow {color:#9a55ff; font-weight: bold;}
+.green { color:#9a55ff; font-weight: bold;}
+
+body{
+    background-color: #fffacd;
+}
+
+.stl{
+    font-family:Candara;
+    font-weight:500;
+}
+</style>
+{% endblock css %}
+
+{% block content %}  
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6">
+                        <div class="card">
+                            <div class="form-input-content">
+                                <div class="card login-form mb-0">
+                                    <div class="card-body pt-5">   
+                                        <h3 class="text-center" style="font-family: Candara;font-weight:bold;margin-top:-5%">Login</h3>
+                
+                                        <form class="mt-5 mb-5 login-input" method="POST" action="{% url 'home' %}">
+                                          {% csrf_token %}
+                                            <div class="form-group" style="margin-top:-8%">
+                                                <input type="text" name="username" class="form-control"  placeholder="Login User Name" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="text" name="story" class="form-control"  placeholder="Story" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="id" class="form-control"  placeholder="Id" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="password" name="password" class="form-control" placeholder="Password" required >
+                                            </div>
+                                            <div class="form-group" >
+                                                <select class="form-control" id="sel1" name="dpdn" required>
+                                                  <option value="PROFILES">Profile</option>
+                                                  <option value="STORIES">Stories</option>
+                                                  <option value="IGTV">IGTV</option>
+                                                </select>
+                                              </div>
+                                            <div class="input-group" style="margin-top: 10%;">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text" id="inputGroupFileAddon01" >Upload</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                  <input type="file" class="custom-file-input" id="inputGroupFile01" name="up"
+                                                    aria-describedby="inputGroupFileAddon01" required>
+                                                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                </div>
+                                              </div>
+
+                                            <button class="btn login-form__btn submit w-100" id="btn" style="margin-top:7%;background-color: #9a55ff;font-family: Candara;font-size: 20px;">Submit</button>
+
+                                        </form>
+                                      
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>    
+
+                        <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6" >
+                            <div class="card" style="height:665px !important">
+                                <div class="card-body">
+                                    <h3 class="text-center" style="font-family: Candara;font-weight:bold;">Story Themes</h3>
+                                    <br>
+                                 
+
+                                    <div class="slideshow-container">
+
+                                        <div class="mySlides fade">
+                                          <div class="numbertext">1 / 10</div>
+                                          <img src="{% static './images/users/fitness.png' %}" style="width:100%">
+
+                                        </div>
+                                        
+                                        <div class="mySlides fade">
+                                          <div class="numbertext">2 / 10</div>
+                                          <img src="{% static './images/users/breakfastnew.png' %}" style="width:100%">
+
+                                        </div>
+                                        
+                                        <div class="mySlides fade">
+                                          <div class="numbertext">3 / 10</div>
+                                          <img src="{% static './images/users/petnew.png' %}" style="width:100%">
+          
+                                        </div>
+                                        
+                                        <div class="mySlides fade">
+                                          <div class="numbertext">4 / 10</div>
+                                          <img src="{% static './images/users/gamenew.png' %}" style="width:100%">
+                                        </div>
+
+                                        <div class="mySlides fade">
+                                            <div class="numbertext">5 / 10</div>
+                                            <img src="{% static './images/users/music.png' %}" style="width:100%">
+                                          </div>
+
+                                          <div class="mySlides fade">
+                                            <div class="numbertext">6 / 10</div>
+                                            <img src="{% static './images/users/banking.png' %}" style="width:100%">
+                                          </div>
+
+                                          <div class="mySlides fade">
+                                            <div class="numbertext">7 / 10</div>
+                                            <img src="{% static './images/users/phn.png' %}" style="width:100%">
+                                          </div>
+
+                                          <div class="mySlides fade">
+                                            <div class="numbertext">8 / 10</div>
+                                            <img src="{% static './images/users/bike.png' %}" style="width:100%">
+                                          </div>
+
+                                          <div class="mySlides fade">
+                                            <div class="numbertext">9 / 10</div>
+                                            <img src="{% static './images/users/shoes.png' %}" style="width:100%">
+                                          </div>
+
+                                          <div class="mySlides fade">
+                                            <div class="numbertext">10 / 10</div>
+                                            <img src="{% static './images/users/shopping.png' %}" style="width:100%">
+                                          </div>
+                                        </div>
+                                        
+                                        <br>
+                                        <br>
+                                        <div class="sliders">
+                                            <h3 class="stl">
+                                              Fitness Story 
+                                            </h3>
+                                            <p class="stl" style="font-size: 16px;">Post a Story describing your fitness schedule at home</p>
+                                            <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                                      </div>
+                                      <div class="sliders">
+                                        <h3 class="stl">
+                                         Breakfast Story 
+                                        </h3>
+                                        <p class="stl" style="font-size: 16px;">Post a Story describing your favourite recipe</p>
+                                        <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                                  </div>
+                                  <div class="sliders">
+                                    <h3 class="stl">
+                                      Pet Story 
+                                    </h3>
+                                    <p class="stl" style="font-size: 16px;">Post a Story describing your memorable moment with pet</p>
+                                    <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                              </div>
+                                       <div class="sliders">
+                                              <h3 class="stl">
+                                                Game Story 
+                                              </h3>
+                                              <p class="stl" style="font-size: 16px;">Post a Story describing your favourite game</p>
+                                              <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                                        </div>
+                                        <div class="sliders">
+                                            <h3 class="stl">
+                                              Music Story 
+                                            </h3>
+                                            <p class="stl" style="font-size: 16px;">Post a Story describing your favourite music playlist</p>
+                                            <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                                      </div>
+                                      <div class="sliders">
+                                        <h3 class="stl">
+                                          Banking Story 
+                                        </h3>
+                                        <p class="stl" style="font-size: 16px;">Post a Story describing your online banking life</p>
+                                        <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                                  </div>
+
+                              <div class="sliders">
+                                <h3 class="stl">
+                                  Phone Story 
+                                </h3>
+                                <p class="stl" style="font-size: 16px;">Post a Story describing your time spent with your phone</p>
+                                <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                          </div>
+                          <div class="sliders">
+                            <h3 class="stl">
+                              Bike Story 
+                            </h3>
+                            <p class="stl" style="font-size: 16px;">Post a Story describing your dream bike</p>
+                            <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                      </div>
+                      <div class="sliders">
+                        <h3 class="stl">
+                          Shoes Story 
+                        </h3>
+                        <p class="stl" style="font-size: 16px;">Post a Story describing your favourite shoe brand</p>
+                        <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+                  </div>
+                  <div class="sliders">
+                    <h3 class="stl">
+                      Shopping Story 
+                    </h3>
+                    <p class="stl" style="font-size: 16px;">Post a Story describing your online shopping life</p>
+                    <p class="stl" style="font-size: 16px;">Narrate a 3 min story</p>
+              </div>                              
+                                  <br>
+                                         
+                                  <div style="text-align:center">
+                                    <span class="dot"></span> 
+                                    <span class="dot"></span> 
+                                    <span class="dot"></span> 
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                    <span class="dot"></span>
+                                  </div>
+
+                               </div>
+                            </div>
+                        </div>
+
+                    </div>
+                
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img src="{% static './images/users/georgenew.jpg' %}" class="rounded-circle" alt="">
+                                    <h5 class="mt-3 mb-1" style="font-family:Candara;font-size:20px">Thomas George</h5>
+                                    <p class="m-0" style="font-family:Candara;font-size: 16px;">CEO</p>  
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img src="{% static './images/users/marynew.jpg' %}" class="rounded-circle" alt="">
+                                    <h5 class="mt-3 mb-1" style="font-family:Candara;font-size:20px">Mary Puthren</h5>
+                                    <p class="m-0" style="font-family:Candara;font-size: 16px;">Sr Research Executive</p>          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% comment %} <div class="col-lg-3 col-sm-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <img src="{% static './images/users/blankusernew.jpg' %}" class="rounded-circle" alt="">
+                                    <h5 class="mt-3 mb-1" style="font-family:Candara;font-size:20px">John Doe</h5>
+                                    <p class="m-0" style="font-family:Candara;font-size: 16px;">Developer</p>                
+                                </div>
+                            </div>
+                        </div>
+                    </div> {% endcomment %}
+
+                </div>
+                <div class="row">
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-facebook">
+                                    <span class="s-icon"><i class="fa fa-facebook"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-linkedin">
+                                    <a href ="https://in.linkedin.com/company/dowell-research">
+                                    <span class="s-icon"><i class="fa fa-linkedin" style="color:white"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-googleplus">
+                                    <a href="https://www.instagram.com/uxlivinglabdowell/">
+                                    <span class="s-icon"><i class="fa fa-instagram" style="color:white"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="card">
+                                <div class="social-graph-wrapper widget-twitter">
+                                    <a href="https://twitter.com/dowellresearch?lang=en">
+                                    <span class="s-icon"><i class="fa fa-twitter" style="color:white"></i></span>
+                                </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+{% endblock content %}
+
+{% block script %}
+<script type="text/javascript">
+    var slideIndex = 0;
+    showSlides();
+    
+    function showSlides() {
+      var i;
+      var slides = document.getElementsByClassName("mySlides");
+      var dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 2000);
+    }
+</script>
+
+<script type="text/javascript">
+     var slideIndex1 = 0; 
+        showSliders();
+        function showSliders() {
+          var i;
+          var slidess = document.getElementsByClassName("sliders");
+
+          for (i = 0; i < slidess.length; i++) {
+            slidess[i].style.display = "none";  
+          }
+          slideIndex1++;
+          if (slideIndex1 > slidess.length) {slideIndex1 = 1}    
+          slidess[slideIndex1-1].style.display = "block";  
+          setTimeout(showSliders, 2000);
+        }
+</script>
+{% endblock script %}
+
+        
